@@ -3,7 +3,7 @@ __pycache__/
 *$py.class
 .DS_Store
 bin/
-
+.gitattributes
 # C extensions
 *.so
 
