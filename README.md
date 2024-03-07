@@ -14,14 +14,14 @@
 Эта функция извлекает последнее изображение Земли из API NASA EPIC.
 
 Использование:
-```get_nasa_earth_image(api_key)``` api_key: Ваш ключ API NASA.
+```get_nasa_earth_image(api_key)``` `api_key:` Ваш ключ API NASA.
 
 3. Получение нескольких изображений Земли от NASA
 Эта функция извлекает несколько изображений Земли из API NASA EPIC.
 
 Использование:
-```fetch_nasa_earth_images(api_key, count=5)``` api_key: Ваш ключ API NASA.
-count: Количество изображений для извлечения (по умолчанию 5).
+```fetch_nasa_earth_images(api_key, count=5)``` `api_key:` Ваш ключ API NASA.
+`count:` Количество изображений для извлечения (по умолчанию 5).
 
 ## Начало работы
 1. Получите ключ API NASA на [NASA API Portal](https://api.nasa.gov)
