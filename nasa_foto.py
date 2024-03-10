@@ -1,9 +1,11 @@
 import os
-from urllib.parse import urlparse
-
-import requests
 from dotenv import load_dotenv
+from urllib.parse import urlparse
+import requests
 
+
+
+load_dotenv()
 def fetch_nasa_image(api_key, count=5):
     try:
         url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}&count={count}'
@@ -11,7 +13,7 @@ def fetch_nasa_image(api_key, count=5):
         response.raise_for_status()
 
         data = response.json()
-        os.makedirs('nasa_images', exist_ok=True)
+        os.makedirs('images', exist_ok=True)
         for idx, image_data in enumerate(data):
             image_url = image_data['url']
             extension = os.path.splitext(urlparse(image_url).path)[-1]
@@ -25,7 +27,7 @@ def fetch_nasa_image(api_key, count=5):
         print(f'Произошла ошибка: {e}')
 
 if __name__ == '__main__':
-    load_dotenv()
+
     api_key = os.environ['NASA_API_KEY']
     fetch_nasa_image(api_key, count=3)
 

@@ -11,7 +11,7 @@ def get_epic_images(api_key, count=5):
 
         data = response.json()
         if data:
-            os.makedirs('earth_images', exist_ok=True)
+            os.makedirs('images', exist_ok=True)
             for image_info in data[:count]:
                 image_date = image_info['date'][:10].replace('-', '/')
                 image_name = image_info['image']
@@ -22,7 +22,7 @@ def get_epic_images(api_key, count=5):
                 response.raise_for_status()
 
                 # Сохраняем изображение
-                with open(f'earth_images/{image_name}.png', 'wb') as f:
+                with open(f'images/{image_name}.png', 'wb') as f:
                     f.write(response.content)
                     print(f"Изображение {image_name}.png успешно сохранено")
 
