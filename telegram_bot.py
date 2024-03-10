@@ -1,18 +1,42 @@
+import os
+import random
+import time
 from telegram import Bot
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
-bot_token = os.environ['TELEGRAM_BOT_API']
 
-channel_id = '@nasa_epic_space'
-
-
-bot = Bot(token=bot_token)
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_API')
+TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
 
 
-photo_path = 'images/epic_1b_20240308073922.png'
+PHOTOS_DIRECTORY = 'images'
 
 
-bot.send_photo(chat_id=channel_id, photo=open(photo_path, 'rb'))
+PUBLICATION_DELAY = int(os.getenv('PUBLICATION_DELAY', 4 * 60 * 60))
 
+
+bot = Bot(token=TELEGRAM_BOT_TOKEN)
+
+def publish_photos():
+    photos = os.listdir(PHOTOS_DIRECTORY)
+    if not photos:
+        print("Нет фотографий для публикации.")
+        return
+
+    random.shuffle(photos)
+    for photo_name in photos:
+        photo_path = os.path.join(PHOTOS_DIRECTORY, photo_name)
+        try:
+            with open(photo_path, 'rb') as photo_file:
+                bot.send_photo(chat_id=TELEGRAM_CHANNEL_ID, photo=photo_file)
+                print(f"Отправлено: {photo_name}")
+        except Exception as e:
+            print(f"Ошибка при отправке {photo_name}: {e}")
+        time.sleep(10)  # Пауза между отправкой фотографий, чтобы избежать блокировки
+
+if __name__ == "__main__":
+    while True:
+        publish_photos()
+        print(f"Публикация завершена. Ожидание {PUBLICATION_DELAY} секунд.")
+        time.sleep(PUBLICATION_DELAY)

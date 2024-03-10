@@ -4,8 +4,6 @@ from urllib.parse import urlparse
 import requests
 
 
-
-load_dotenv()
 def fetch_nasa_image(api_key, count=5):
     try:
         url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}&count={count}'
@@ -27,7 +25,7 @@ def fetch_nasa_image(api_key, count=5):
         print(f'Произошла ошибка: {e}')
 
 if __name__ == '__main__':
-
+    load_dotenv()
     api_key = os.environ['NASA_API_KEY']
     fetch_nasa_image(api_key, count=3)
 
