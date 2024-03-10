@@ -1,9 +1,8 @@
 import os
-
 import requests
+
 from dotenv import load_dotenv
 
-load_dotenv()
 def get_epic_images(api_key, count=5):
     try:
         url_info = f'https://api.nasa.gov/EPIC/api/natural/images?api_key={api_key}'
@@ -35,8 +34,8 @@ def get_epic_images(api_key, count=5):
     except Exception as e:
         print(f'Произошла ошибка: {e}')
 
-# Вставьте ваш API-ключ NASA здесь
-api_key = os.environ['NASA_API_KEY']
 
-# Укажите количество изображений, которые вы хотите загрузить (по умолчанию 5)
-get_epic_images(api_key, count=5)
+if __name__ == '__main__':
+    load_dotenv()
+    api_key = os.environ['NASA_API_KEY']
+    get_epic_images(api_key, count=5)

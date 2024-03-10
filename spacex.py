@@ -2,6 +2,7 @@ import os
 import requests as r
 
 
+
 # def spacex_image(url, folder_page):
 #     response = r.get(url)
 #     os.makedirs(folder_page, exist_ok=True)

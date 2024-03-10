@@ -1,5 +1,6 @@
 import os
 from urllib.parse import urlparse
+
 import requests
 from dotenv import load_dotenv
 
@@ -13,9 +14,7 @@ def fetch_nasa_image(api_key, count=5):
         os.makedirs('nasa_images', exist_ok=True)
         for idx, image_data in enumerate(data):
             image_url = image_data['url']
-            # Получаем расширение файла из URL
             extension = os.path.splitext(urlparse(image_url).path)[-1]
-            # Сохраняем изображение
             with open(f'nasa_images/nasa_image{idx + 1}{extension}', 'wb') as f:
                 f.write(requests.get(image_url).content)
                 print(f"Изображение {idx + 1} успешно сохранено в nasa_images/nasa_image{idx + 1}{extension}")
