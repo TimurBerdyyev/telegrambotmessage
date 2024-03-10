@@ -3,7 +3,9 @@ __pycache__/
 *$py.class
 .DS_Store
 bin/
-.gitattributes
+gitattributes/
+.idea
+
 # C extensions
 *.so
 
