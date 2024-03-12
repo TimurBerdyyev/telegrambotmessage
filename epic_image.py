@@ -1,21 +1,24 @@
 import os
 import requests
 from dotenv import load_dotenv
+from logger_config import getLogger
 
-import logging
-
-logging.basicConfig(level=logging.INFO)
+logger = getLogger()
 
 def get_epic_images(api_key, count=5):
-    url_natural_images = 'https://api.nasa.gov/EPIC/api/natural/images'
-    params = {'api_key': api_key}
-    response = requests.get(url_natural_images, params=params)
-    response.raise_for_status()
-    response_data = response.json()
+    try:
+        url_natural_images = 'https://api.nasa.gov/EPIC/api/natural/images'
+        params = {'api_key': api_key}
+        response = requests.get(url_natural_images, params=params)
+        response.raise_for_status()
+        json_content = response.json()
 
-    if response_data:
+        if not json_content:
+            logger.info("Информация об изображениях отсутствует.")
+            return
+
         os.makedirs('images', exist_ok=True)
-        for image_info in response_data[:count]:
+        for image_info in json_content[:count]:
             image_date = image_info['date'][:10].replace('-', '/')
             image_name = image_info['image']
             image_url = f"https://api.nasa.gov/EPIC/archive/natural/{image_date}/png/{image_name}.png"
@@ -23,10 +26,10 @@ def get_epic_images(api_key, count=5):
             response.raise_for_status()
             with open(f'images/{image_name}.png', 'wb') as f:
                 f.write(response.content)
-            logging.info(f"Изображение {image_name}.png успешно сохранено")
+            logger.info(f"Изображение {image_name}.png успешно сохранено")
 
-    else:
-        logging.info("Информация об изображениях отсутствует.")
+    except requests.RequestException as e:
+        logger.error(f"Ошибка при запросе: {e}")
 
 if __name__ == '__main__':
     load_dotenv()

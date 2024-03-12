@@ -1,8 +1,9 @@
 import os
 import argparse
 import requests as r
-import logging
+from logger_config import getLogger
 
+logger = getLogger()
 
 def fetch_spacex_launch_photos(launch_id):
     try:
@@ -16,24 +17,21 @@ def fetch_spacex_launch_photos(launch_id):
 
         photos = decoded_response.get("links", {}).get("flickr", {}).get("original", [])
         if not photos:
-            logging.warning("Список фотографий пуст.")
+            logger.warning("Список фотографий пуст.")
             return
 
-        logging.info(f"Найдено {len(photos)} фотографий.")
+        logger.info(f"Найдено {len(photos)} фотографий.")
         os.makedirs('images', exist_ok=True)
         for idx, photo_url in enumerate(photos):
             with open(f"images/spacex{idx + 1}.jpg", 'wb') as f:
                 photo_response = r.get(photo_url)
                 f.write(photo_response.content)
-                logging.info(f"Фото {idx + 1} скачано")
+                logger.info(f"Фото {idx + 1} скачано")
 
     except r.exceptions.HTTPError as e:
-        logging.error(f"Ошибка HTTP: {e}")
-
+        logger.error(f"Ошибка HTTP: {e}")
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-
     parser = argparse.ArgumentParser(description='Fetch SpaceX launch photos')
     parser.add_argument('launch_id', type=str, help='ID of the SpaceX launch')
     args = parser.parse_args()
