@@ -27,8 +27,6 @@ def fetch_nasa_images(api_key, count=5):
 
     except requests.RequestException as e:
         logging.error(f"Ошибка при запросе: {e}")
-    except Exception as e:
-        logging.error(f"Произошла ошибка: {e}")
 
 if __name__ == '__main__':
     load_dotenv()
