@@ -47,16 +47,18 @@ pip install -r requirements.txt
 `python publish_telegram_photos.py`
 
 # Ожидаемый вывод скрипта для загрузки фотографий NASA
-`Изображение 1 успешно сохранено в images/nasa_image1.jpg
+```
+Изображение 1 успешно сохранено в images/nasa_image1.jpg
 Изображение 2 успешно сохранено в images/nasa_image2.jpg
-...`
+...
+```
 
 # Ожидаемый вывод скрипта для публикации фотографий в Telegram
-`
+```
 Отправлено: photo1.jpg
 Отправлено: photo2.jpg
 ...
-`
+```
 
 ## Описание файла nasa_telegram_publisher.py
 Этот скрипт предназначен для автоматической публикации фотографий в Telegram-канале из указанной директории.
