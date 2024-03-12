@@ -6,16 +6,16 @@
 
 1. **Получение фотографий запусков SpaceX**
    - Эта функция извлекает ссылки на фотографии с последнего запуска SpaceX.
-   - Использование: `fetch_spacex_last_launch()`
+   - Использование: `fetch_spacex_launch_photos()`
 
 2. **Получение изображения Земли от NASA**
    - Эта функция извлекает последнее изображение Земли из API NASA EPIC.
-   - Использование: `get_nasa_earth_image(api_key)`
+   - Использование: `fetch_nasa_images(api_key)`
      - `api_key`: Ваш ключ API NASA.
 
 3. **Получение нескольких изображений Земли от NASA**
    - Эта функция извлекает несколько изображений Земли из API NASA EPIC.
-   - Использование: `fetch_nasa_earth_images(api_key, count=5)`
+   - Использование: `get_epic_images(api_key, count=5)`
      - `api_key`: Ваш ключ API NASA.
      - `count`: Количество изображений для извлечения (по умолчанию 5).
 
@@ -29,7 +29,7 @@
 
 ### Установка программы:
 ```
-git clone https://github.com/your_username/your_project.git
+git clone https://github.com/TimurBerdyyev/telegrambotmessage.git
 cd your_project
 pip install -r requirements.txt
 ```
@@ -38,13 +38,13 @@ pip install -r requirements.txt
 ### Примеры запуска скриптов:
 
 * Запуск скрипта для загрузки фотографий NASA
-`python fetch_nasa_images.py --api_key YOUR_NASA_API_KEY --count 5`
+`python nasa_foto.py --api_key YOUR_NASA_API_KEY --count 5`
 
 * Запуск скрипта для загрузки фотографий SpaceX
-`python fetch_spacex_photos.py --launch_id YOUR_SPACEX_LAUNCH_ID`
+`python spacex.py --launch_id YOUR_SPACEX_LAUNCH_ID`
 
 * Запуск скрипта для публикации фотографий в Telegram
-`python publish_telegram_photos.py`
+`python telegram_bot.py`
 
 # Ожидаемый вывод скрипта для загрузки фотографий NASA
 ```
