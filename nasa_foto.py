@@ -10,9 +10,9 @@ def fetch_nasa_image(api_key, count=5):
         response = requests.get(url)
         response.raise_for_status()
 
-        data = response.json()
+        apod_data = response.json()
         os.makedirs('images', exist_ok=True)
-        for idx, image_data in enumerate(data):
+        for idx, image_data in enumerate(apod_data):
             image_url = image_data['url']
             extension = os.path.splitext(urlparse(image_url).path)[-1]
             with open(f'nasa_images/nasa_image{idx + 1}{extension}', 'wb') as f:

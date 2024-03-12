@@ -5,14 +5,14 @@ from dotenv import load_dotenv
 
 def get_epic_images(api_key, count=5):
     try:
-        url_info = f'https://api.nasa.gov/EPIC/api/natural/images?api_key={api_key}'
-        response = requests.get(url_info)
+        url_natural_images = f'https://api.nasa.gov/EPIC/api/natural/images?api_key={api_key}'
+        response = requests.get(url_natural_images)
         response.raise_for_status()
 
-        data = response.json()
-        if data:
+        response_data = response.json()
+        if response_data:
             os.makedirs('images', exist_ok=True)
-            for image_info in data[:count]:
+            for image_info in response_data[:count]:
                 image_date = image_info['date'][:10].replace('-', '/')
                 image_name = image_info['image']
                 image_url = f"https://api.nasa.gov/EPIC/archive/natural/{image_date}/png/{image_name}.png?api_key={api_key}"
