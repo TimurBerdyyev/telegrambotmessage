@@ -37,27 +37,26 @@ pip install -r requirements.txt
 
 ### Примеры запуска скриптов:
 
-```bash
-# Запуск скрипта для загрузки фотографий NASA
-python fetch_nasa_images.py --api_key YOUR_NASA_API_KEY --count 5
+* Запуск скрипта для загрузки фотографий NASA
+`python fetch_nasa_images.py --api_key YOUR_NASA_API_KEY --count 5`
 
-# Запуск скрипта для загрузки фотографий SpaceX
-python fetch_spacex_photos.py --launch_id YOUR_SPACEX_LAUNCH_ID
+* Запуск скрипта для загрузки фотографий SpaceX
+`python fetch_spacex_photos.py --launch_id YOUR_SPACEX_LAUNCH_ID`
 
-# Запуск скрипта для публикации фотографий в Telegram
-python publish_telegram_photos.py
-```
+* Запуск скрипта для публикации фотографий в Telegram
+`python publish_telegram_photos.py`
+
 # Ожидаемый вывод скрипта для загрузки фотографий NASA
-```Изображение 1 успешно сохранено в images/nasa_image1.jpg
+`Изображение 1 успешно сохранено в images/nasa_image1.jpg
 Изображение 2 успешно сохранено в images/nasa_image2.jpg
-...
-```
+...`
+
 # Ожидаемый вывод скрипта для публикации фотографий в Telegram
-```
+`
 Отправлено: photo1.jpg
 Отправлено: photo2.jpg
 ...
-```
+`
 
 ## Описание файла nasa_telegram_publisher.py
 Этот скрипт предназначен для автоматической публикации фотографий в Telegram-канале из указанной директории.
