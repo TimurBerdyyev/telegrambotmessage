@@ -1,5 +1,5 @@
 import argparse
-from nasa_foto import fetch_nasa_image
+from nasa_foto import fetch_nasa_images
 from spacex import fetch_spacex_launch_photos
 from epic_image import get_epic_images
 
@@ -15,7 +15,7 @@ def main():
 
     if args.nasa:
         if args.api_key:
-            fetch_nasa_image(args.api_key, args.count)
+            fetch_nasa_images(args.api_key, args.count)
         else:
             print('Please provide the NASA API key using --api_key option.')
 
