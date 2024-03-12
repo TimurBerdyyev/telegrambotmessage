@@ -3,6 +3,7 @@ import requests
 from dotenv import load_dotenv
 from logger_config import getLogger
 
+
 logger = getLogger()
 
 def get_epic_images(api_key, count=5):

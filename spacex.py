@@ -3,6 +3,7 @@ import argparse
 import requests as r
 from logger_config import getLogger
 
+
 logger = getLogger()
 
 def fetch_spacex_launch_photos(launch_id):

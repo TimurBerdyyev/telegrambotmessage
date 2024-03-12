@@ -5,6 +5,7 @@ from telegram import Bot
 from dotenv import load_dotenv
 from requests.exceptions import HTTPError
 
+
 load_dotenv()
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_API')

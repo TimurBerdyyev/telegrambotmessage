@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import requests
 from logger_config import getLogger
 
-
 logger = getLogger()
 
 def fetch_nasa_images(api_key, count=5):
