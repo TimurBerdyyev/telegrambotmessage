@@ -1,6 +1,6 @@
 import os
-from dotenv import load_dotenv
 import requests
+from dotenv import load_dotenv
 from logger_config import getLogger
 
 logger = getLogger()
@@ -18,14 +18,18 @@ def fetch_nasa_images(api_key, count=5):
             return
 
         json_content = response.json()
-        os.makedirs('images', exist_ok=True)
+
+        os.makedirs('nasa_images', exist_ok=True)
+
         for idx, image_data in enumerate(json_content):
             image_url = image_data['url']
             extension = os.path.splitext(os.path.basename(image_url))[-1]
-            with open(f'nasa_images/nasa_image{idx + 1}{extension}', 'wb') as f:
+
+            with open(f'images/nasa_image{idx + 1}{extension}', 'wb') as f:
                 image_response = requests.get(image_url)
                 f.write(image_response.content)
-                logger.info(f"Изображение {idx + 1} успешно сохранено в nasa_images/nasa_image{idx + 1}{extension}")
+
+            logger.info(f"Изображение {idx + 1} успешно сохранено в nasa_images/nasa_image{idx + 1}{extension}")
 
     except requests.RequestException as e:
         logger.error(f"Ошибка при запросе: {e}")
