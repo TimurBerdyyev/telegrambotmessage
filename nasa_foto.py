@@ -17,11 +17,11 @@ def fetch_nasa_images(api_key, count=5):
             logger.error(f"Ошибка при получении данных: {response.status_code}")
             return
 
-        json_content = response.json()
+        content = response.json()
 
         os.makedirs('nasa_images', exist_ok=True)
 
-        for idx, image_data in enumerate(json_content):
+        for idx, image_data in enumerate(content):
             image_url = image_data['url']
             extension = os.path.splitext(os.path.basename(image_url))[-1]
 
