@@ -5,7 +5,6 @@ from logger_config import getLogger
 
 logger = getLogger()
 
-
 def fetch_spacex_launch_photos(launch_id):
     url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
     response = requests.get(url)
@@ -26,10 +25,12 @@ def fetch_spacex_launch_photos(launch_id):
         photo_response = requests.get(photo_url)
         photo_response.raise_for_status()
 
+        # Открытие файла для записи фотографии
         with open(f"images/spacex{idx + 1}.jpg", 'wb') as f:
             f.write(photo_response.content)
-            logger.info(f"Фото {idx + 1} скачано")
 
+        # Закрытие файла
+        logger.info(f"Фото {idx + 1} скачано")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Fetch SpaceX launch photos')
