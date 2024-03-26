@@ -38,13 +38,13 @@ pip install -r requirements.txt
 ### Примеры запуска скриптов:
 
 * Запуск скрипта для загрузки фотографий NASA
-`python nasa_foto.py --api_key YOUR_NASA_API_KEY --count 5`
+python ```nasa_foto.py --api_key YOUR_NASA_API_KEY --count 5```
 
 * Запуск скрипта для загрузки фотографий SpaceX
-`python spacex.py --launch_id YOUR_SPACEX_LAUNCH_ID`
+python ```spacex.py --launch_id YOUR_SPACEX_LAUNCH_ID```
 
 * Запуск скрипта для публикации фотографий в Telegram
-`python telegram_bot.py`
+python ```telegram_bot.py```
 
 # Ожидаемый вывод скрипта для загрузки фотографий NASA
 ```
