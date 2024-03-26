@@ -1,9 +1,10 @@
 import os
 import requests
 from dotenv import load_dotenv
-from logger_config import getLogger
+import logging
 
-logger = getLogger()
+
+logger = logging.getLogger(__file__)
 
 def fetch_nasa_images(api_key, count=5):
     try:
@@ -25,16 +26,20 @@ def fetch_nasa_images(api_key, count=5):
             image_url = image_info['url']
             extension = os.path.splitext(os.path.basename(image_url))[-1]
 
-            with open(f'images/nasa_image{idx + 1}{extension}', 'wb') as f:
+            with open(f'nasa_images/nasa_image{index + 1}{extension}', 'wb') as f:
                 image_response = requests.get(image_url)
                 f.write(image_response.content)
 
-            logger.info(f"Изображение {idex + 1} успешно сохранено в nasa_images/nasa_image{idex + 1}{extension}")
+            logger.info(f"Изображение {index + 1} успешно сохранено в nasa_images/nasa_image{index + 1}{extension}")
 
     except requests.RequestException as e:
         logger.error(f"Ошибка при запросе: {e}")
 
-if __name__ == '__main__':
+def main():
+    logging.basicConfig(level=logging.ERROR)
     load_dotenv()
     api_key = os.environ['NASA_API_KEY']
     fetch_nasa_images(api_key, count=3)
+
+if __name__ == '__main__':
+    main()
