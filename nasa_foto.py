@@ -18,9 +18,10 @@ def fetch_nasa_images(api_key, count=5):
     for index, image_info in enumerate(content):
         image_url = image_info['url']
         extension = os.path.splitext(os.path.basename(image_url))[-1]
+        image_response = requests.get(image_url)
+        image_response.raise_for_status()
 
         with open(f'nasa_images/nasa_image{index + 1}{extension}', 'wb') as f:
-            image_response = requests.get(image_url)
             f.write(image_response.content)
 
         logger.info(f"Изображение {index + 1} успешно сохранено в nasa_images/nasa_image{index + 1}{extension}")
