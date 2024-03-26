@@ -21,16 +21,16 @@ def fetch_spacex_launch_photos(launch_id):
 
     logger.info(f"Найдено {len(photos)} фотографий.")
     os.makedirs('images', exist_ok=True)
-    for idx, photo_url in enumerate(photos):
+    for index, photo_url in enumerate(photos, start=1):
         photo_response = requests.get(photo_url)
         photo_response.raise_for_status()
 
         # Открытие файла для записи фотографии
-        with open(f"images/spacex{idx + 1}.jpg", 'wb') as f:
+        with open(f"images/spacex{index + 1}.jpg", 'wb') as f:
             f.write(photo_response.content)
 
         # Закрытие файла
-        logger.info(f"Фото {idx + 1} скачано")
+        logger.info(f"Фото {index + 1} скачано")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Fetch SpaceX launch photos')
