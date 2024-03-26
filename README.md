@@ -49,6 +49,10 @@ python
 ```
 spacex.py --launch_id YOUR_SPACEX_LAUNCH_ID
 ```
+* Запуск скрипта для загрузки фотографий NASA epic
+```
+bash epic_images.py
+```
 
 * Запуск скрипта для публикации фотографий в Telegram
 python
