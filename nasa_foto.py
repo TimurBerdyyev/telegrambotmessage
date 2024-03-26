@@ -21,15 +21,15 @@ def fetch_nasa_images(api_key, count=5):
 
         os.makedirs('nasa_images', exist_ok=True)
 
-        for idx, image_data in enumerate(content):
-            image_url = image_data['url']
+        for index, image_info in enumerate(content):
+            image_url = image_info['url']
             extension = os.path.splitext(os.path.basename(image_url))[-1]
 
             with open(f'images/nasa_image{idx + 1}{extension}', 'wb') as f:
                 image_response = requests.get(image_url)
                 f.write(image_response.content)
 
-            logger.info(f"Изображение {idx + 1} успешно сохранено в nasa_images/nasa_image{idx + 1}{extension}")
+            logger.info(f"Изображение {idex + 1} успешно сохранено в nasa_images/nasa_image{idex + 1}{extension}")
 
     except requests.RequestException as e:
         logger.error(f"Ошибка при запросе: {e}")
