@@ -1,7 +1,7 @@
 import requests
 
 
-def fetch_data_and_save(url, filename):
+def download_and_save(url, filename):
     response = requests.get(url)
     response.raise_for_status()
     
