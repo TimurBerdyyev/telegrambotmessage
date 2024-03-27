@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 import logging
 
-from fetch_data_and_save import fetch_data_and_save
+from fetch_data_and_save import download_and_save
 
 logger = logging.getLogger(__file__)
 
