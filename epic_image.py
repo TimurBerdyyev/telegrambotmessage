@@ -24,7 +24,7 @@ def get_epic_images(api_key, count=5):
         image_name = image_data['image']
         image_url = f"https://api.nasa.gov/EPIC/archive/natural/{image_date}/png/{image_name}.png"
         filename = f'images/{image_name}.png'
-        fetch_data_and_save(image_url, filename)
+        download_and_save(image_url, filename)
 
         logger.info(f"Изображение {image_name}.png успешно сохранено")
 
