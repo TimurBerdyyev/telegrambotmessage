@@ -22,7 +22,7 @@ def fetch_nasa_images(api_key, count=5):
         extension = os.path.splitext(os.path.basename(image_url))[-1]
         image_response = requests.get(image_url)
         filename = f'nasa_images/nasa_image{image_index + 1}{extension}'
-        fetch_data_and_save(image_url, filename)
+        download_and_save(image_url, filename)
         image_response.raise_for_status()
 
         with open(f'nasa_images/nasa_image{image_index + 1}{extension}', 'wb') as f:
