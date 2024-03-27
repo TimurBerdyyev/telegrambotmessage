@@ -17,18 +17,18 @@ def fetch_nasa_images(api_key, count=5):
     content = response.json()
     os.makedirs('nasa_images', exist_ok=True)
 
-    for index, image_info in enumerate(content):
+    for image_index, image_info in enumerate(content):
         image_url = image_info['url']
         extension = os.path.splitext(os.path.basename(image_url))[-1]
         image_response = requests.get(image_url)
-        filename = f'nasa_images/nasa_image{index + 1}{extension}'
+        filename = f'nasa_images/nasa_image{image_index + 1}{extension}'
         fetch_data_and_save(image_url, filename)
         image_response.raise_for_status()
 
-        with open(f'nasa_images/nasa_image{index + 1}{extension}', 'wb') as f:
+        with open(f'nasa_images/nasa_image{image_index + 1}{extension}', 'wb') as f:
             f.write(image_response.content)
 
-        logger.info(f"Изображение {index + 1} успешно сохранено в nasa_images/nasa_image{index + 1}{extension}")
+        logger.info(f"Изображение {image_index + 1} успешно сохранено в nasa_images/nasa_image{image_index + 1}{extension}")
 
 
 def main():
