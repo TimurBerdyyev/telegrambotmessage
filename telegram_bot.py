@@ -3,7 +3,7 @@ import time
 from telegram import Bot
 from dotenv import load_dotenv
 
-load_dotenv()
+
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_API')
 TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
@@ -28,4 +28,5 @@ def main():
     publish_photos()
 
 if __name__ == "__main__":
+    load_dotenv()
     main()
