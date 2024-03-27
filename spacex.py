@@ -23,14 +23,9 @@ def fetch_spacex_launch_photos(launch_id):
     logger.info(f"Найдено {len(photos)} фотографий.")
     os.makedirs('images', exist_ok=True)
     for index, photo_url in enumerate(photos, start=1):
-        photo_response = requests.get(photo_url)
-        photo_response.raise_for_status()
+        filename = f"images/spacex{index + 1}.jpg"
+        download_and_save(filename)
 
-        # Открытие файла для записи фотографии
-        with open(f"images/spacex{index + 1}.jpg", 'wb') as f:
-            f.write(photo_response.content)
-
-        # Закрытие файла
         logger.info(f"Фото {index + 1} скачано")
 
 
