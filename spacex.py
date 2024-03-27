@@ -2,14 +2,14 @@ import os
 import argparse
 import requests
 from logger_config import getLogger
-from fetch_data_and_save import fetch_data_and_save
+from fetch_data_and_save import download_and_save
 
 logger = getLogger()
 
 
 def fetch_spacex_launch_photos(launch_id):
     url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
-    response = fetch_data_and_save(url, 'spacex_launch_data.json')
+    response = download_and_save(url, 'spacex_launch_data.json')
 
     decoded_response = response.json()
     if 'error' in decoded_response:
