@@ -23,8 +23,8 @@ def get_epic_images(api_key, count=5):
         image_date = image_data['date'][:10].replace('-', '/')
         image_name = image_data['image']
         image_url = f"https://api.nasa.gov/EPIC/archive/natural/{image_date}/png/{image_name}.png"
-        filename = f'images/{image_name}.png'
-        download_and_save(image_url, filename)
+        image_path = f'images/{image_name}.png'
+        download_and_save(image_url, image_path)
 
         logger.info(f"Изображение {image_name}.png успешно сохранено")
 
