@@ -24,9 +24,7 @@ def publish_photos():
             bot.send_photo(chat_id=TELEGRAM_CHANNEL_ID, photo=photo_file)
         time.sleep(10)
 
-def main():
-    publish_photos()
 
 if __name__ == "__main__":
     load_dotenv()
-    main()
+    publish_photos()
