@@ -21,12 +21,12 @@ def fetch_nasa_images(api_key, count=5):
         image_url = image_info['url']
         extension = os.path.splitext(os.path.basename(image_url))[-1]
     
-        filename = f'nasa_images/nasa_image{image_index}{extension}'
-        download_and_save(image_url, filename)
+        image_path = f'nasa_images/nasa_image{image_index}{extension}'
+        download_and_save(image_url, image_path)
         
 
 
-        logger.info(f"Изображение {image_index} успешно сохранено в nasa_images/nasa_image{image_index + 1}{extension}")
+        logger.info(f"Изображение {image_index} успешно сохранено в nasa_images/nasa_image{image_index}{extension}")
 
 
 def main():
