@@ -9,7 +9,8 @@ logger = getLogger()
 
 def fetch_spacex_launch_photos(launch_id):
     url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
-    response = download_and_save(url, 'spacex_launch_data.json')
+    response = requests.get(url)
+    response.raise_for_status()
 
     decoded_response = response.json()
     if 'error' in decoded_response:
@@ -24,9 +25,10 @@ def fetch_spacex_launch_photos(launch_id):
     os.makedirs('images', exist_ok=True)
     for index, photo_url in enumerate(photos, start=1):
         image_path = f"images/spacex{index}.jpg"
-        download_and_save(image_path)
+        download_and_save(photo_url, image_path)
 
         logger.info(f"Фото {index} скачано")
+
 
 
 if __name__ == "__main__":
