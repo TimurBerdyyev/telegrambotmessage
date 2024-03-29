@@ -26,7 +26,7 @@ def fetch_nasa_images(api_key, count=5):
         
 
 
-        logger.info(f"Изображение {image_index} успешно сохранено в nasa_images/nasa_image{image_index}{extension}")
+        logger.info(f"Изображение {image_index} успешно сохранено в {image_path}")
 
 
 def main():
