@@ -23,8 +23,8 @@ def fetch_spacex_launch_photos(launch_id):
     logger.info(f"Найдено {len(photos)} фотографий.")
     os.makedirs('images', exist_ok=True)
     for index, photo_url in enumerate(photos, start=1):
-        filename = f"images/spacex{index}.jpg"
-        download_and_save(filename)
+        image_path = f"images/spacex{index}.jpg"
+        download_and_save(image_path)
 
         logger.info(f"Фото {index} скачано")
 
