@@ -17,10 +17,10 @@ def publish_photos(bot, photos_directory, telegram_channel_id):
 if __name__ == "__main__":
     load_dotenv()
     
-    TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_API')
-    TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
-    PHOTOS_DIRECTORY = 'images'
-    PUBLICATION_DELAY = int(os.getenv('PUBLICATION_DELAY', 4 * 60 * 60))
+    telegram_bot_token = os.getenv('TELEGRAM_BOT_API')
+    telegram_channel_id = os.getenv('TELEGRAM_CHANNEL_ID')
+    photos_directory = 'images'
+    publication_delay = int(os.getenv('PUBLICATION_DELAY', 4 * 60 * 60))
 
-    bot = Bot(token=TELEGRAM_BOT_TOKEN)
-    publish_photos(bot, PHOTOS_DIRECTORY, TELEGRAM_CHANNEL_ID)
+    bot = Bot(token=telegram_bot_token)
+    publish_photos(bot, photos_directory, telegram_channel_id)
