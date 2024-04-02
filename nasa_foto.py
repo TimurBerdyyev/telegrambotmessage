@@ -17,8 +17,8 @@ def fetch_nasa_images(api_key, count=5):
     content = response.json()
     os.makedirs('nasa_images', exist_ok=True)
 
-    for index_image, data_image in enumerate(content, start=1):
-        image_url = data_image['url']
+    for index_image, image in enumerate(content, start=1):
+        image_url = image['url']
         extension = os.path.splitext(os.path.basename(image_url))[-1]
     
         image_path = f'nasa_images/nasa_image{index_image}{extension}'
